@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="icon-16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="manifest" href="manifest.json">
-    <title>2010 Scion xB AC Compressor & Receiver Drier Replacement</title>
+    <title>2010 Scion xB AC Compressor, Receiver Drier & Expansion Valve</title>
     <style>
         :root {
             --bg: #1a1a1a;
@@ -364,6 +364,22 @@
             margin-bottom: 0.5rem;
             opacity: 0.5;
         }
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .status-done {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--success);
+        }
+        .status-pending {
+            background: rgba(255, 170, 0, 0.2);
+            color: var(--warning);
+        }
         @media (max-width: 375px) {
             .header h1 { font-size: 1.1rem; }
             .spec-grid { grid-template-columns: 1fr; }
@@ -373,7 +389,7 @@
 <body>
     <div class="header">
         <h1>Scion xB AC Repair</h1>
-        <div class="subtitle">2010 Scion xB 2AZ-FE · Compressor + Receiver Drier</div>
+        <div class="subtitle">2010 Scion xB 2AZ-FE · Compressor + Receiver Drier + Expansion Valve</div>
     </div>
     <div class="nav-tabs">
         <button class="nav-tab active" onclick="showSection('overview')">Overview</button>
@@ -381,9 +397,12 @@
         <button class="nav-tab" onclick="showSection('parts')">Parts</button>
         <button class="nav-tab" onclick="showSection('removal')">Removal</button>
         <button class="nav-tab" onclick="showSection('install')">Install</button>
+        <button class="nav-tab" onclick="showSection('expvalve')">Exp Valve</button>
         <button class="nav-tab" onclick="showSection('recharge')">Recharge</button>
         <button class="nav-tab" onclick="showSection('troubleshoot')">Diagnose</button>
     </div>
+
+    <!-- OVERVIEW -->
     <div id="overview" class="section active">
         <div class="card">
             <div class="card-title">
@@ -391,52 +410,73 @@
                 Project Status
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 25%"></div>
+                <div class="progress-fill" style="width: 60%"></div>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-dim);">
-                <span>Parts Received</span>
+                <span>Compressor & Drier Installed</span>
                 <span>In Progress</span>
             </div>
         </div>
+
         <div class="card">
             <div class="card-title">
                 <svg viewBox="0 0 24 24"><path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.4 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.4 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/></svg>
                 What We're Doing
             </div>
             <p style="margin-bottom: 1rem; color: var(--text-dim);">
-                Replace the AC compressor and receiver drier on a 2010 Scion xB with the 2AZ-FE engine. 
-                The old compressor clutch was seized (would not spin with 12V or manual force). New compressor 
-                spins freely with belt but clutch not engaging with AC button — indicating electrical or 
-                refrigerant pressure issue.
+                Replace the AC compressor, receiver drier, and expansion valve on a 2010 Scion xB with the 2AZ-FE engine.
+                The old compressor clutch was seized (would not spin with 12V or manual force).
+            </p>
+            <p style="margin-bottom: 1rem; color: var(--text-dim);">
+                <strong>Current Status:</strong>
+                <span class="status-badge status-done">Compressor Installed</span>
+                <span class="status-badge status-done">Receiver Drier Installed</span>
+                <span class="status-badge status-pending">Expansion Valve Pending</span>
+                <span class="status-badge status-pending">Evacuate/Charge Pending</span>
             </p>
             <div class="tip-box">
                 <div class="tip-box-title">Key Insight</div>
                 <p style="font-size: 0.9rem;">
-                    A spinning pulley doesn't mean the clutch is engaged. The pulley always spins with the belt. 
-                    The clutch plate in front must lock in (you'll hear a clunk) when the coil energizes. 
+                    A spinning pulley doesn't mean the clutch is engaged. The pulley always spins with the belt.
+                    The clutch plate in front must lock in (you'll hear a clunk) when the coil energizes.
                     No clunk = electrical or low-pressure safety cutoff.
                 </p>
             </div>
         </div>
+
         <div class="card">
             <div class="card-title">
                 <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
                 Pre-Work Checklist
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk1"><label for="chk1">Verify compressor clutch spins freely (pulley + plate)</label>
+                <input type="checkbox" id="chk1" checked><label for="chk1">✅ Verify compressor clutch spins freely (pulley + plate)</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk2"><label for="chk2">Recover refrigerant from system (professional or rental machine)</label>
+                <input type="checkbox" id="chk2" checked><label for="chk2">✅ Install new compressor (torqued, hoses connected)</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk3"><label for="chk3">Disconnect battery negative terminal</label>
+                <input type="checkbox" id="chk3" checked><label for="chk3">✅ Install new receiver drier with new O-rings</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk4"><label for="chk4">Have replacement O-rings and ND-OIL8 compressor oil ready</label>
+                <input type="checkbox" id="chk4"><label for="chk4">⬜ Replace expansion valve (GPD 3411860)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk5"><label for="chk5">⬜ Evacuate system (pull vacuum 29+ inHg for 30+ min)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk6"><label for="chk6">⬜ Charge with R-134a (450-550g per spec sticker)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk7"><label for="chk7">⬜ Leak test all connections</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk8"><label for="chk8">⬜ Test clutch engagement and vent temperature</label>
             </div>
         </div>
     </div>
+
+    <!-- SPECS -->
     <div id="specs" class="section">
         <div class="card">
             <div class="card-title">
@@ -500,6 +540,8 @@
             </div>
         </div>
     </div>
+
+    <!-- PARTS -->
     <div id="parts" class="section">
         <div class="card">
             <div class="card-title">
@@ -511,33 +553,33 @@
                     <div class="part-name">A/C Compressor (New)</div>
                     <div class="part-brand">Aftermarket replacement</div>
                 </div>
-                <div class="part-price">Check RA</div>
+                <div class="part-price">Installed ✅</div>
             </div>
             <div class="part-item">
                 <div class="part-info">
                     <div class="part-name">A/C Receiver Drier</div>
                     <div class="part-brand">Replace with compressor</div>
                 </div>
-                <div class="part-price">Check RA</div>
+                <div class="part-price">Installed ✅</div>
+            </div>
+            <div class="part-item">
+                <div class="part-info">
+                    <div class="part-name">A/C Expansion Valve</div>
+                    <div class="part-brand">GPD 3411860 — $12.47</div>
+                </div>
+                <div class="part-price">Pending ⏳</div>
             </div>
             <div class="part-item">
                 <div class="part-info">
                     <div class="part-name">A/C Refrigerant Oil</div>
-                    <div class="part-brand">FOUR SEASONS 59007</div>
+                    <div class="part-brand">FOUR SEASONS 59007 — $7.24</div>
                 </div>
                 <div class="part-price">$7.24</div>
             </div>
             <div class="part-item">
                 <div class="part-info">
-                    <div class="part-name">A/C Expansion Valve</div>
-                    <div class="part-brand">GPD 3411860</div>
-                </div>
-                <div class="part-price">$12.47</div>
-            </div>
-            <div class="part-item">
-                <div class="part-info">
                     <div class="part-name">A/C System O-Rings</div>
-                    <div class="part-brand">UAC RS2584</div>
+                    <div class="part-brand">UAC RS2584 — $12.00</div>
                 </div>
                 <div class="part-price">$12.00</div>
             </div>
@@ -555,6 +597,8 @@
             </div>
         </div>
     </div>
+
+    <!-- REMOVAL -->
     <div id="removal" class="section">
         <div class="card">
             <div class="card-title">
@@ -670,11 +714,13 @@
             </div>
         </div>
     </div>
+
+    <!-- INSTALL -->
     <div id="install" class="section">
         <div class="card">
             <div class="card-title">
                 <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                Compressor Installation
+                Compressor Installation ✅ COMPLETED
             </div>
             <div class="step">
                 <div class="step-number">1</div>
@@ -739,7 +785,7 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-title">Receiver Drier Installation</div>
+            <div class="card-title">Receiver Drier Installation ✅ COMPLETED</div>
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
@@ -761,6 +807,98 @@
             </div>
         </div>
     </div>
+
+    <!-- EXPANSION VALVE -->
+    <div id="expvalve" class="section">
+        <div class="card">
+            <div class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                Expansion Valve Replacement ⏳ PENDING
+            </div>
+            <div class="tip-box">
+                <div class="tip-box-title">Why Replace It?</div>
+                <p style="font-size: 0.9rem;">
+                    The expansion valve meters refrigerant into the evaporator. A clogged or stuck valve 
+                    causes poor cooling or evaporator freeze-up. Always replace when opening the system 
+                    for compressor replacement.
+                </p>
+            </div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Recover Refrigerant (if any remains)</div>
+                    <div class="step-text">
+                        The expansion valve is on the high-pressure side. Recover any remaining refrigerant 
+                        from the system before opening connections.
+                    </div>
+                    <div class="step-danger">
+                        <strong>WARNING:</strong> Never open AC lines under pressure. System must be fully evacuated.
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Locate the Expansion Valve</div>
+                    <div class="step-text">
+                        On the Scion xB, the expansion valve is located at the evaporator inlet, 
+                        typically behind the glove box or on the firewall side of the HVAC unit.
+                        It meters refrigerant flow into the evaporator.
+                    </div>
+                    <div class="image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                        <div>Expansion valve location diagram</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Behind glove box / firewall side of HVAC unit</div>
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Remove Old Valve</div>
+                    <div class="step-text">
+                        Disconnect the inlet (liquid line from receiver drier) and outlet (evaporator) lines. 
+                        Remove the mounting bolts or clamp. Extract the old valve carefully.
+                    </div>
+                    <div class="step-warning">
+                        <strong>NOTICE:</strong> Seal all openings immediately with vinyl tape or plugs to prevent moisture entry.
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">Install New Valve (GPD 3411860)</div>
+                    <div class="step-text">
+                        Install new expansion valve with new O-rings from the UAC RS2584 kit. 
+                        Lubricate O-rings with ND-OIL8 before installation.
+                    </div>
+                    <div class="step-note">
+                        <strong>IMPORTANT:</strong> The valve is directional — check flow arrow matches refrigerant direction 
+                        (liquid line IN → evaporator OUT).
+                    </div>
+                    <div class="step-warning">
+                        <strong>NOTICE:</strong> Do not overtighten — aluminum threads strip easily. Torque to 9-11 Nm typically.
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">Reattach Lines</div>
+                    <div class="step-text">
+                        Connect liquid line and evaporator line. Torque to spec. 
+                        Use new O-rings on both connections, lubricated with ND-OIL8.
+                    </div>
+                    <div class="step-note">
+                        <strong>Torque:</strong> Typically 9.8-11 Nm (87-97 in-lbf) — check under-hood sticker
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RECHARGE -->
     <div id="recharge" class="section">
         <div class="card">
             <div class="card-title">
@@ -809,7 +947,8 @@
                     <div class="step-title">Leak Test</div>
                     <div class="step-text">
                         Run system and check all connections with leak detector or UV dye. 
-                        Check especially at compressor hose connections and receiver drier fittings.
+                        Check especially at compressor hose connections, receiver drier fittings, 
+                        and expansion valve connections.
                     </div>
                 </div>
             </div>
@@ -828,6 +967,8 @@
             </div>
         </div>
     </div>
+
+    <!-- TROUBLESHOOT -->
     <div id="troubleshoot" class="section">
         <div class="card">
             <div class="card-title">
@@ -901,11 +1042,14 @@
             </table>
         </div>
     </div>
+
     <div class="footer">
         <p>2010 Scion xB AC Repair Guide</p>
         <p style="margin-top: 0.5rem;">Based on Toyota 2AZ-FE service manual · For reference only</p>
     </div>
+
     <button class="back-to-top" onclick="window.scrollTo(0,0)">↑</button>
+
     <script>
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
