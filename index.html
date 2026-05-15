@@ -397,7 +397,9 @@
         <button class="nav-tab" onclick="showSection('parts')">Parts</button>
         <button class="nav-tab" onclick="showSection('removal')">Removal</button>
         <button class="nav-tab" onclick="showSection('install')">Install</button>
-        <button class="nav-tab" onclick="showSection('expvalve')">Exp Valve</button>
+    <button class="nav-tab" onclick="showSection('expvalve')">Exp Valve</button>
+        <button class="nav-tab" onclick="showSection('condenser')">Condenser</button>
+        <button class="nav-tab" onclick="showSection('evaporator')">Evaporator</button>
         <button class="nav-tab" onclick="showSection('recharge')">Recharge</button>
         <button class="nav-tab" onclick="showSection('troubleshoot')">Diagnose</button>
     </div>
@@ -429,10 +431,12 @@
             </p>
             <p style="margin-bottom: 1rem; color: var(--text-dim);">
                 <strong>Current Status:</strong>
-                <span class="status-badge status-done">Compressor Installed</span>
-                <span class="status-badge status-done">Receiver Drier Installed</span>
-                <span class="status-badge status-pending">Expansion Valve Pending</span>
-                <span class="status-badge status-pending">Evacuate/Charge Pending</span>
+                <span class="status-badge status-done">Compressor ✅</span>
+                <span class="status-badge status-done">Receiver Drier ✅</span>
+                <span class="status-badge status-done">Expansion Valve ✅</span>
+                <span class="status-badge status-done">Oil ✅</span>
+                <span class="status-badge status-pending">Condenser+Evaporator 🟡</span>
+                <span class="status-badge status-pending">Evacuate/Charge 🟡</span>
             </p>
             <div class="tip-box">
                 <div class="tip-box-title">Key Insight</div>
@@ -459,19 +463,31 @@
                 <input type="checkbox" id="chk3" checked><label for="chk3">✅ Install new receiver drier with new O-rings</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk4"><label for="chk4">⬜ Replace expansion valve (GPD 3411860)</label>
+                <input type="checkbox" id="chk4" checked><label for="chk4">✅ Replace expansion valve (GPD 3411860) — Done</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk5"><label for="chk5">⬜ Evacuate system (pull vacuum 29+ inHg for 30+ min)</label>
+                <input type="checkbox" id="chk5" checked><label for="chk5">✅ Add refrigerant oil (FOUR SEASONS 59007, 4oz) — Done</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk6"><label for="chk6">⬜ Charge with R-134a (450-550g per spec sticker)</label>
+                <input type="checkbox" id="chk6"><label for="chk6">⬜ Install new condenser (UAC CN3755PFC) — Arriving Wed</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk7"><label for="chk7">⬜ Leak test all connections</label>
+                <input type="checkbox" id="chk7"><label for="chk7">⬜ Install new evaporator core (UAC EV939769PFC) — Arriving Wed</label>
             </div>
             <div class="checklist-item">
-                <input type="checkbox" id="chk8"><label for="chk8">⬜ Test clutch engagement and vent temperature</label>
+                <input type="checkbox" id="chk8"><label for="chk8">⬜ Replace O-rings at all connections (under-dash + condenser)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk9"><label for="chk9">⬜ Evacuate system (pull vacuum 29+ inHg for 30+ min)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk10"><label for="chk10">⬜ Charge with R-134a (450-550g per spec sticker)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk11"><label for="chk11">⬜ Leak test all connections</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="chk12"><label for="chk12">⬜ Test clutch engagement and vent temperature</label>
             </div>
         </div>
     </div>
@@ -567,21 +583,35 @@
                     <div class="part-name">A/C Expansion Valve</div>
                     <div class="part-brand">GPD 3411860 — $12.47</div>
                 </div>
-                <div class="part-price">Pending ⏳</div>
+                <div class="part-price" style="color: var(--success)">Done ✅</div>
             </div>
             <div class="part-item">
                 <div class="part-info">
                     <div class="part-name">A/C Refrigerant Oil</div>
                     <div class="part-brand">FOUR SEASONS 59007 — $7.24</div>
                 </div>
-                <div class="part-price">$7.24</div>
+                <div class="part-price" style="color: var(--success)">Done ✅</div>
+            </div>
+            <div class="part-item">
+                <div class="part-info">
+                    <div class="part-name">A/C Condenser</div>
+                    <div class="part-brand">UAC CN3755PFC — $47.79</div>
+                </div>
+                <div class="part-price" style="color: var(--warning)">Arriving Wed 🟡</div>
+            </div>
+            <div class="part-item">
+                <div class="part-info">
+                    <div class="part-name">A/C Evaporator Core</div>
+                    <div class="part-brand">UAC EV939769PFC — $43.79</div>
+                </div>
+                <div class="part-price" style="color: var(--warning)">Arriving Wed 🟡</div>
             </div>
             <div class="part-item">
                 <div class="part-info">
                     <div class="part-name">A/C System O-Rings</div>
                     <div class="part-brand">UAC RS2584 — $12.00</div>
                 </div>
-                <div class="part-price">$12.00</div>
+                <div class="part-price" style="color: var(--success)">Partial ✅</div>
             </div>
         </div>
         <div class="card">
@@ -813,23 +843,45 @@
         <div class="card">
             <div class="card-title">
                 <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                Expansion Valve Replacement ⏳ PENDING
+                Expansion Valve Replacement ✅ COMPLETED
             </div>
             <div class="tip-box">
-                <div class="tip-box-title">Why Replace It?</div>
+                <div class="tip-box-title">CRITICAL FIELD DISCOVERY — Correct Under-Hood Method</div>
                 <p style="font-size: 0.9rem;">
-                    The expansion valve meters refrigerant into the evaporator. A clogged or stuck valve 
-                    causes poor cooling or evaporator freeze-up. Always replace when opening the system 
-                    for compressor replacement.
+                    <strong>The Operation CHARM service manual is WRONG for this job.</strong> It shows expansion valve replacement 
+                    requiring full HVAC unit removal through the dash (glove box, instrument panel, dashboard — 6+ hour job). 
+                    In reality, the expansion valve on the 2010 Scion xB 2AZ-FE is accessible from under the hood in minutes.
                 </p>
+            </div>
+            <div class="card" style="background: var(--highlight); margin-top: 0.75rem;">
+                <div class="card-title">Service Manual vs Reality</div>
+                <table style="width: 100%; font-size: 0.85rem; color: var(--text-dim); border-collapse: collapse;">
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 0.5rem;"><strong>Source</strong></td>
+                        <td style="padding: 0.5rem;"><strong>Method</strong></td>
+                        <td style="padding: 0.5rem;"><strong>Time</strong></td>
+                        <td style="padding: 0.5rem;"><strong>Difficulty</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 0.5rem; color: var(--danger);">Operation CHARM Manual</td>
+                        <td style="padding: 0.5rem;">Remove glove box, dash panels, full HVAC unit from firewall</td>
+                        <td style="padding: 0.5rem;">6-8 hours</td>
+                        <td style="padding: 0.5rem; color: var(--danger);">Extreme</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem; color: var(--success);">Actual Field Method ✅</td>
+                        <td style="padding: 0.5rem;">Under hood: 1 bolt + 2 screws, evaporator pops off</td>
+                        <td style="padding: 0.5rem;">15-30 min</td>
+                        <td style="padding: 0.5rem; color: var(--success);">Easy</td>
+                    </tr>
+                </table>
             </div>
             <div class="step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                    <div class="step-title">Recover Refrigerant (if any remains)</div>
+                    <div class="step-title">Recover Refrigerant</div>
                     <div class="step-text">
-                        The expansion valve is on the high-pressure side. Recover any remaining refrigerant 
-                        from the system before opening connections.
+                        System must be fully evacuated before opening any lines. Recover any remaining refrigerant.
                     </div>
                     <div class="step-danger">
                         <strong>WARNING:</strong> Never open AC lines under pressure. System must be fully evacuated.
@@ -839,61 +891,199 @@
             <div class="step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <div class="step-title">Locate the Expansion Valve</div>
+                    <div class="step-title">Access from Under Hood (NOT Behind Glove Box)</div>
                     <div class="step-text">
-                        On the Scion xB, the expansion valve is located at the evaporator inlet, 
-                        typically behind the glove box or on the firewall side of the HVAC unit.
-                        It meters refrigerant flow into the evaporator.
+                        The expansion valve is mounted on the evaporator core, which sits on the passenger-side firewall. 
+                        Look straight down from above — you'll see the high/low line plate held by a single 10mm hex bolt.
                     </div>
                     <div class="image-placeholder">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                        <div>Expansion valve location diagram</div>
-                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Behind glove box / firewall side of HVAC unit</div>
+                        <div>Correct access: under hood, passenger firewall</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">DO NOT remove glove box or dash — valve is under hood!</div>
                     </div>
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                    <div class="step-title">Remove Old Valve</div>
+                    <div class="step-title">Remove the Line Plate (10mm Hex Bolt)</div>
                     <div class="step-text">
-                        Disconnect the inlet (liquid line from receiver drier) and outlet (evaporator) lines. 
-                        Remove the mounting bolts or clamp. Extract the old valve carefully.
+                        Remove the single 10mm hex bolt holding the plate that secures the high and low pressure lines 
+                        to the evaporator assembly. The plate will come loose, exposing the connections.
                     </div>
-                    <div class="step-warning">
-                        <strong>NOTICE:</strong> Seal all openings immediately with vinyl tape or plugs to prevent moisture entry.
+                    <div class="step-note">
+                        <strong>Tool:</strong> 10mm socket or wrench
                     </div>
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">4</div>
                 <div class="step-content">
-                    <div class="step-title">Install New Valve (GPD 3411860)</div>
+                    <div class="step-title">Remove Evaporator Mounting Screws (2× T25 Torx)</div>
                     <div class="step-text">
-                        Install new expansion valve with new O-rings from the UAC RS2584 kit. 
-                        Lubricate O-rings with ND-OIL8 before installation.
+                        Two T25 Torx machine screws secure the evaporator assembly to the firewall. 
+                        Remove both screws — the evaporator assembly will now pop off the firewall freely.
                     </div>
                     <div class="step-note">
-                        <strong>IMPORTANT:</strong> The valve is directional — check flow arrow matches refrigerant direction 
-                        (liquid line IN → evaporator OUT).
-                    </div>
-                    <div class="step-warning">
-                        <strong>NOTICE:</strong> Do not overtighten — aluminum threads strip easily. Torque to 9-11 Nm typically.
+                        <strong>Tool:</strong> T25 Torx bit/driver
                     </div>
                 </div>
             </div>
             <div class="step">
                 <div class="step-number">5</div>
                 <div class="step-content">
-                    <div class="step-title">Reattach Lines</div>
+                    <div class="step-title">Extract Old Valve, Clean, Install New</div>
                     <div class="step-text">
-                        Connect liquid line and evaporator line. Torque to spec. 
-                        Use new O-rings on both connections, lubricated with ND-OIL8.
+                        With the evaporator loose, you can access the expansion valve directly. Remove old valve, 
+                        clean mating surfaces, install new GPD 3411860 valve with new O-rings (UAC RS2584 kit) 
+                        lubricated with ND-OIL8.
                     </div>
                     <div class="step-note">
-                        <strong>Torque:</strong> Typically 9.8-11 Nm (87-97 in-lbf) — check under-hood sticker
+                        <strong>IMPORTANT:</strong> Valve is directional — check flow arrow (liquid line IN → evaporator OUT)
+                    </div>
+                    <div class="step-warning">
+                        <strong>Torque:</strong> 9.8–11 Nm (87–97 in-lbf) — do not overtighten, aluminum threads strip easily
                     </div>
                 </div>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="step-title">Reattach Everything</div>
+                    <div class="step-text">
+                        Pop evaporator back onto firewall, install 2× T25 Torx screws. Reattach line plate with 10mm hex bolt. 
+                        Use new O-rings on all connections, lubricated with ND-OIL8.
+                    </div>
+                    <div class="step-note">
+                        <strong>Seal all openings</strong> with vinyl tape or plugs if not reconnecting immediately — prevent moisture entry.
+                    </div>
+                </div>
+            </div>
+            <div class="tip-box" style="background: rgba(76, 175, 80, 0.1); border-color: var(--success);">
+                <div class="tip-box-title" style="color: var(--success);">✅ Actual Result</div>
+                <p style="font-size: 0.9rem;">
+                    This method took <strong>under 30 minutes</strong> in the field. The service manual's 6-8 hour dash-out 
+                    procedure would have been unnecessary and damaging. Always check for practical under-hood access first!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONDENSER -->
+    <div id="condenser" class="section">
+        <div class="card">
+            <div class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Condenser Replacement 🟡 PENDING
+            </div>
+            <div class="tip-box">
+                <div class="tip-box-title">Why Replace It?</div>
+                <p style="font-size: 0.9rem;">
+                    The condenser sits in front of the radiator and releases heat from the compressed refrigerant. 
+                    Leaks here are common, especially at the connection points. Replacing the condenser when the 
+                    system is already open ensures a complete, reliable repair.
+                </p>
+            </div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Remove Old Condenser</div>
+                    <div class="step-text">
+                        Disconnect the refrigerant lines (high and low pressure) from the condenser. Remove the mounting bolts 
+                        securing the condenser to the radiator support. Carefully lift the old condenser out.
+                    </div>
+                    <div class="step-warning">
+                        <strong>NOTICE:</strong> Cap all lines immediately to prevent contamination and moisture ingress.
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Install New Condenser (UAC CN3755PFC)</div>
+                    <div class="step-text">
+                        Position the new condenser and secure with mounting bolts. Reconnect the refrigerant lines 
+                        using new O-rings lubricated with ND-OIL8. Torque connections to spec.
+                    </div>
+                    <div class="step-note">
+                        <strong>Torque:</strong> Line connections typically 9.8–11 Nm (87–97 in-lbf)
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Replace O-Rings</div>
+                    <div class="step-text">
+                        Use new O-rings from the UAC RS2584 kit on every connection. Lubricate with ND-OIL8 before assembly. 
+                        Do not reuse old O-rings — they are a primary leak point.
+                    </div>
+                </div>
+            </div>
+            <div class="part-item">
+                <div class="part-info">
+                    <div class="part-name">A/C Condenser</div>
+                    <div class="part-brand">UAC CN3755PFC — $47.79</div>
+                </div>
+                <div class="part-price" style="color: var(--warning);">Arriving Wed 🟡</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVAPORATOR -->
+    <div id="evaporator" class="section">
+        <div class="card">
+            <div class="card-title">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H8v-2h2V7h2v4h2v2h-2v4z"/></svg>
+                Evaporator Core Replacement 🟡 PENDING
+            </div>
+            <div class="tip-box">
+                <div class="tip-box-title">Connected to Expansion Valve</div>
+                <p style="font-size: 0.9rem;">
+                    The evaporator core and expansion valve share the same under-hood access. If you're replacing 
+                    one, inspect the other for leaks or corrosion. The evaporator core is the aluminum finned unit 
+                    that bolts to the firewall behind the expansion valve.
+                </p>
+            </div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Same Access as Expansion Valve</div>
+                    <div class="step-text">
+                        Follow the expansion valve procedure: remove the 10mm hex bolt for the line plate, remove 2× T25 Torx screws, 
+                        and the evaporator assembly pops off the firewall. Disconnect the expansion valve from the old core.
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Swap the Core</div>
+                    <div class="step-text">
+                        Remove the old evaporator core from the firewall mount. Install the new UAC EV939769PFC core. 
+                        Reattach the expansion valve (new or existing) with new O-rings.
+                    </div>
+                    <div class="step-note">
+                        <strong>Tip:</strong> Replace the expansion valve at the same time — it's cheap insurance and the system is already open.
+                    </div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Reinstall</div>
+                    <div class="step-text">
+                        Pop the evaporator back onto the firewall, install 2× T25 Torx screws. Reattach line plate with 10mm hex bolt. 
+                        Use new O-rings on all connections, lubricated with ND-OIL8.
+                    </div>
+                </div>
+            </div>
+            <div class="part-item">
+                <div class="part-info">
+                    <div class="part-name">A/C Evaporator Core</div>
+                    <div class="part-brand">UAC EV939769PFC — $43.79</div>
+                </div>
+                <div class="part-price" style="color: var(--warning);">Arriving Wed 🟡</div>
             </div>
         </div>
     </div>
@@ -973,42 +1163,82 @@
         <div class="card">
             <div class="card-title">
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                Clutch Won't Engage?
+                Diagnostics & Troubleshooting
+            </div>
+            <div class="tip-box" style="background: rgba(255, 170, 0, 0.1); border-color: var(--warning);">
+                <div class="tip-box-title" style="color: var(--warning);">⚠️ Critical: Clutch Won't Engage Without Refrigerant</div>
+                <p style="font-size: 0.9rem;">
+                    The pressure switch prevents the compressor clutch from engaging when the system is empty 
+                    (no refrigerant = no pressure = switch open). This is a <strong>safety feature</strong>, not a fault.
+                    You MUST have a proper refrigerant charge before the clutch will engage electrically.
+                </p>
             </div>
             <div class="troubleshoot-item active">
-                <div class="troubleshoot-question">Did you verify refrigerant charge?</div>
+                <div class="troubleshoot-question">1. Verify Refrigerant Charge First</div>
                 <div class="troubleshoot-answer">
-                    The ECU will not engage the compressor if refrigerant pressure is too low 
-                    (leak) or too high (overcharge). Check with manifold gauges.
+                    The ECU will not engage the compressor if refrigerant pressure is too low (leak) or too high (overcharge).
+                    Check with manifold gauges. The pressure switch opens below ~25 PSI (low pressure cutoff).
+                    <br><br>
+                    <strong>Test:</strong> With system charged, pressure should read 30-50 PSI on low side at idle.
+                    If gauges show 0 PSI, the switch is open and clutch will not engage — this is normal for an empty system.
                 </div>
             </div>
             <div class="troubleshoot-item">
-                <div class="troubleshoot-question">Check the AC relay</div>
+                <div class="troubleshoot-question">2. Check Fuses (A/C MAG Fuse)</div>
                 <div class="troubleshoot-answer">
-                    Locate the AC relay in the engine compartment fuse box. Swap with a known-good 
-                    relay (like the horn) to test. Listen for relay click when AC button pressed.
+                    Locate the <strong>A/C MAG fuse (10A)</strong> in the engine compartment fuse box.
+                    Also check the <strong>IG2 fuse</strong> and any AC-related fuses in the interior fuse box behind the dash.
+                    <br><br>
+                    <strong>Tip:</strong> Use a test light or multimeter — don't just visually inspect. A fuse can look good but have a hairline crack.
                 </div>
             </div>
             <div class="troubleshoot-item">
-                <div class="troubleshoot-question">Check the pressure switch</div>
+                <div class="troubleshoot-question">3. Test the A/C Relay</div>
                 <div class="troubleshoot-answer">
-                    The refrigerant pressure switch on the high side line prevents compressor operation 
-                    if pressure is out of range. Test with a multimeter or jumper (briefly) to verify.
+                    The A/C relay is in the engine compartment fuse box. When you press the AC button, you should hear the relay click.
+                    <br><br>
+                    <strong>Quick test:</strong> Swap the A/C relay with a known-good relay (like the horn relay). If the relay is bad, 
+                    the clutch won't get power even if everything else is fine.
+                    <br><br>
+                    <strong>Direct test:</strong> Remove relay, use a jumper wire between pins 30 and 87 (consult relay diagram).
+                    This bypasses the control circuit and sends power directly to the clutch coil. 
+                    <span style="color: var(--danger);">Only do this briefly — if clutch works, the problem is upstream (relay, pressure switch, or ECU).</span>
                 </div>
             </div>
             <div class="troubleshoot-item">
-                <div class="troubleshoot-question">Direct 12V test at compressor</div>
+                <div class="troubleshoot-question">4. Test Pressure Switch</div>
                 <div class="troubleshoot-answer">
-                    Unplug the compressor connector. Apply 12V directly to the clutch coil terminals. 
-                    You should hear a distinct clunk and see the plate lock to the pulley. 
-                    If it doesn't engage, the coil is bad (even on a new compressor, it's possible).
+                    The refrigerant pressure switch is on the high side line near the receiver drier. 
+                    It prevents compressor operation if pressure is out of range (too low = leak, too high = overcharge).
+                    <br><br>
+                    <strong>Test with gauges:</strong> If low side reads 0-10 PSI, switch is open (normal for empty system).
+                    Charge the system and retest — if clutch still won't engage after proper charge, the switch may be faulty.
+                    <br><br>
+                    <strong>Direct test:</strong> Unplug the pressure switch connector and jumper the two wires together.
+                    This fakes a "pressure OK" signal to the ECU. <span style="color: var(--danger);">Only for testing — do not leave jumpered while driving.</span>
+                    If clutch engages with jumper, the switch or charge level is the problem.
                 </div>
             </div>
             <div class="troubleshoot-item">
-                <div class="troubleshoot-question">Check fuses</div>
+                <div class="troubleshoot-question">5. Direct 12V Test at Compressor</div>
                 <div class="troubleshoot-answer">
-                    Verify AC fuse in engine compartment and interior fuse boxes. 
-                    The xB typically has a 10A AC fuse.
+                    Unplug the compressor connector. Apply 12V directly to the clutch coil terminals 
+                    (typically the two-wire connector on the compressor, not the single wire for the pulley).
+                    <br><br>
+                    <strong>You should hear a distinct clunk</strong> and see the clutch plate lock to the pulley.
+                    If it doesn't engage, the clutch coil is bad (rare on a new compressor, but possible).
+                    <br><br>
+                    <strong>WARNING:</strong> Only apply 12V for 2-3 seconds. The coil will overheat if energized continuously without the engine running.
+                </div>
+            </div>
+            <div class="troubleshoot-item">
+                <div class="troubleshoot-question">6. Check Wiring Harness</div>
+                <div class="troubleshoot-answer">
+                    Inspect the wiring from the compressor back to the relay and fuse box. 
+                    Look for chafing, corrosion, or loose connections — especially near the compressor where heat and vibration are highest.
+                    <br><br>
+                    <strong>Test:</strong> With relay removed, check for 12V at the relay socket pin 30 (constant power) and 
+                    pin 86 (control power from ECU when AC button pressed).
                 </div>
             </div>
         </div>
@@ -1019,27 +1249,50 @@
                     <tr>
                         <th>Symptom</th>
                         <th>Likely Cause</th>
+                        <th>Test</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Pulley spins, plate doesn't lock</td>
-                        <td>No power to clutch coil (relay, fuse, pressure switch)</td>
+                        <td>No power to clutch coil</td>
+                        <td>Direct 12V test at compressor</td>
                     </tr>
                     <tr>
                         <td>Plate locks but no cold air</td>
-                        <td>Low refrigerant, expansion valve stuck, compressor weak</td>
+                        <td>Low refrigerant, bad expansion valve, weak compressor</td>
+                        <td>Manifold gauges, check pressures</td>
                     </tr>
                     <tr>
                         <td>Cold then warm after few minutes</td>
-                        <td>Evaporator freezing (temp sensor issue) or low charge</td>
+                        <td>Evaporator freezing or low charge</td>
+                        <td>Check superheat, temp sensor</td>
                     </tr>
                     <tr>
                         <td>Noisy when engaged</td>
                         <td>Compressor failing, loose bolts, belt misalignment</td>
+                        <td>Visual inspection, belt tension</td>
+                    </tr>
+                    <tr>
+                        <td>Clutch won't engage at all</td>
+                        <td>Empty system (pressure switch open) — NORMAL</td>
+                        <td>Charge system first, then retest</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="card" style="background: rgba(76, 175, 80, 0.1); border-color: var(--success);">
+            <div class="card-title" style="color: var(--success);">✅ Diagnostic Flowchart</div>
+            <ol style="font-size: 0.9rem; color: var(--text-dim); padding-left: 1.5rem;">
+                <li><strong>System charged?</strong> → No → Charge to spec, retest</li>
+                <li><strong>System charged?</strong> → Yes → Check A/C MAG fuse (10A)</li>
+                <li><strong>Fuse good?</strong> → Yes → Test A/C relay (swap or jumper)</li>
+                <li><strong>Relay good?</strong> → Yes → Jumper pressure switch</li>
+                <li><strong>Clutch engages with jumper?</strong> → Yes → Pressure switch or charge level</li>
+                <li><strong>Still no clutch?</strong> → Direct 12V at compressor coil</li>
+                <li><strong>Direct 12V works?</strong> → No → Bad clutch coil (rare)</li>
+                <li><strong>Direct 12V works?</strong> → Yes → Wiring issue between relay and compressor</li>
+            </ol>
         </div>
     </div>
 
