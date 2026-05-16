@@ -401,6 +401,7 @@
         <button class="nav-tab" onclick="showSection('condenser')">Condenser</button>
         <button class="nav-tab" onclick="showSection('evaporator')">Evaporator</button>
         <button class="nav-tab" onclick="showSection('recharge')">Recharge</button>
+        <button class="nav-tab" onclick="showSection('electrical')">Electrical</button>
         <button class="nav-tab" onclick="showSection('troubleshoot')">Diagnose</button>
     </div>
 
@@ -431,12 +432,10 @@
             </p>
             <p style="margin-bottom: 1rem; color: var(--text-dim);">
                 <strong>Current Status:</strong>
-                <span class="status-badge status-done">Compressor ✅</span>
-                <span class="status-badge status-done">Receiver Drier ✅</span>
-                <span class="status-badge status-done">Expansion Valve ✅</span>
-                <span class="status-badge status-done">Oil ✅</span>
-                <span class="status-badge status-pending">Condenser+Evaporator 🟡</span>
-                <span class="status-badge status-pending">Evacuate/Charge 🟡</span>
+                <span class="status-badge status-done">Expansion Valve Done</span>
+                <span class="status-badge status-pending">Leak Test Pending</span>
+                <span class="status-badge status-pending">Condenser TBD</span>
+                <span class="status-badge status-pending">Evacuate/Charge Pending</span>
             </p>
             <div class="tip-box">
                 <div class="tip-box-title">Key Insight</div>
@@ -506,7 +505,7 @@
                 </div>
                 <div class="spec-item">
                     <div class="spec-label">Charge Amount</div>
-                    <div class="spec-value">450-550g (15.9-19.4 oz)</div>
+                    <div class="spec-value">410-470g (14.5-16.6 oz)</div>
                 </div>
                 <div class="spec-item">
                     <div class="spec-label">Compressor Oil</div>
@@ -1153,6 +1152,75 @@
                     <div class="step-note">
                         <strong>Target vent temp:</strong> 40-45°F (4-7°C) at idle on a warm day
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ELECTRICAL -->
+    <div id="electrical" class="section">
+        <div class="card">
+            <div class="card-title">A/C Electrical System (2008 xB EWD)</div>
+            <p style="color: var(--text-dim); margin-bottom: 1rem;">
+                Wiring data from xb-tech EWD manual (2008 Scion xB, same 2nd generation as 2010).
+                Use for diagnosing clutch engagement, pressure sensor, and control circuit issues.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Components &amp; Connectors</div>
+            <div class="spec-grid">
+                <div class="spec-item"><div class="spec-label">Compressor Clutch</div><div class="spec-value">B7 (W, V, O wires)</div></div>
+                <div class="spec-item"><div class="spec-label">Blower Motor</div><div class="spec-value">C40 (W-B, M, O)</div></div>
+                <div class="spec-item"><div class="spec-label">Damper Servo</div><div class="spec-value">C38/C39</div></div>
+                <div class="spec-item"><div class="spec-label">A/C Switch</div><div class="spec-value">C46(A), C47(B)</div></div>
+                <div class="spec-item"><div class="spec-label">CAN Bus</div><div class="spec-value">C8 (CANH/CANL)</div></div>
+                <div class="spec-item"><div class="spec-label">Pressure Sensor</div><div class="spec-value">V (Violet) / GR (Green)</div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Clutch Won't Engage — Diagnostic Chain</div>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Check ECU-IG NO.2 Fuse (10A)</div>
+                    <div class="step-text">Powers the A/C amplifier. Blown fuse = no clutch signal.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Check HTR Relay</div>
+                    <div class="step-text">Controls blower and A/C power. Swap with known-good relay to test.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Check A/C Pressure Sensor (V/GR wires)</div>
+                    <div class="step-text">Low refrigerant pressure = clutch inhibit. Sensor reads ~0.5-4.5V depending on pressure.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">Check A/C Thermistor (Y/L/P/V/GR wires)</div>
+                    <div class="step-text">Evaporator freeze protection. If too cold, clutch won't engage.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">Check B7 Connector (W/V/O wires)</div>
+                    <div class="step-text">With A/C on, should see ~12V at clutch connector. No voltage = upstream electrical issue.</div>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="step-title">Check CAN Bus (C8: CANH/CANL)</div>
+                    <div class="step-text">A/C request travels from amplifier to ECM via CAN. Broken CAN = no A/C command.</div>
                 </div>
             </div>
         </div>
